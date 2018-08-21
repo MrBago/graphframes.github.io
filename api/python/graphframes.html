@@ -1,27 +1,16 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>graphframes package &#8212; pygraphframes 0.5.0 documentation</title>
-    
+    <title>graphframes package &#8212; pygraphframes 0.6.0 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygraphframes.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.5.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -30,8 +19,7 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="graphframes.examples package" href="graphframes.examples.html" />
     <link rel="prev" title="Welcome to the GraphFrames Python API docs!" href="index.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -48,7 +36,7 @@
           <a href="index.html" title="Welcome to the GraphFrames Python API docs!"
              accesskey="P">previous</a> |</li>
     
-        <li class="nav-item nav-item-0"><a href="index.html">pygraphframes 0.5.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pygraphframes 0.6.0 documentation</a> &#187;</li>
  
       </ul>
     </div>  
@@ -80,18 +68,18 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>v</strong> &#8211; <code class="xref py py-class docutils literal"><span class="pre">DataFrame</span></code> holding vertex information.
-Must contain a column named &#8220;id&#8221; that stores unique
+<li><strong>v</strong> – <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> holding vertex information.
+Must contain a column named “id” that stores unique
 vertex IDs.</li>
-<li><strong>e</strong> &#8211; <code class="xref py py-class docutils literal"><span class="pre">DataFrame</span></code> holding edge information.
-Must contain two columns &#8220;src&#8221; and &#8220;dst&#8221; storing source
+<li><strong>e</strong> – <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> holding edge information.
+Must contain two columns “src” and “dst” storing source
 vertex IDs and destination vertex IDs of edges, respectively.</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">localVertices</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">)]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">localVertices</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;A&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">localEdges</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;love&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;hate&quot;</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s2">&quot;follow&quot;</span><span class="p">)]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">localVertices</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="n">sqlContext</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">localEdges</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="s2">&quot;dst&quot;</span><span class="p">,</span> <span class="s2">&quot;action&quot;</span><span class="p">])</span>
@@ -103,19 +91,19 @@ vertex IDs and destination vertex IDs of edges, respectively.</li>
 <code class="descname">aggregateMessages</code><span class="sig-paren">(</span><em>aggCol</em>, <em>sendToSrc=None</em>, <em>sendToDst=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphframes/graphframe.html#GraphFrame.aggregateMessages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphframes.GraphFrame.aggregateMessages" title="Permalink to this definition">¶</a></dt>
 <dd><p>Aggregates messages from the neighbours.</p>
 <p>When specifying the messages and aggregation function, the user may reference columns using
-the static methods in <a class="reference internal" href="graphframes.lib.html#graphframes.lib.AggregateMessages" title="graphframes.lib.AggregateMessages"><code class="xref py py-class docutils literal"><span class="pre">graphframes.lib.AggregateMessages</span></code></a>.</p>
+the static methods in <a class="reference internal" href="graphframes.lib.html#graphframes.lib.AggregateMessages" title="graphframes.lib.AggregateMessages"><code class="xref py py-class docutils literal notranslate"><span class="pre">graphframes.lib.AggregateMessages</span></code></a>.</p>
 <p>See Scala documentation for more details.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>aggCol</strong> &#8211; the requested aggregation output either as
-<code class="xref py py-class docutils literal"><span class="pre">pyspark.sql.Column</span></code> or SQL expression string</li>
-<li><strong>sendToSrc</strong> &#8211; message sent to the source vertex of each triplet either as
-<code class="xref py py-class docutils literal"><span class="pre">pyspark.sql.Column</span></code> or SQL expression string (default: None)</li>
-<li><strong>sendToDst</strong> &#8211; message sent to the destination vertex of each triplet either as
-<code class="xref py py-class docutils literal"><span class="pre">pyspark.sql.Column</span></code> or SQL expression string (default: None)</li>
+<li><strong>aggCol</strong> – the requested aggregation output either as
+<code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.Column</span></code> or SQL expression string</li>
+<li><strong>sendToSrc</strong> – message sent to the source vertex of each triplet either as
+<code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.Column</span></code> or SQL expression string (default: None)</li>
+<li><strong>sendToDst</strong> – message sent to the destination vertex of each triplet either as
+<code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.Column</span></code> or SQL expression string (default: None)</li>
 </ul>
 </td>
 </tr>
@@ -158,15 +146,15 @@ storage level.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>algorithm</strong> &#8211; connected components algorithm to use (default: &#8220;graphframes&#8221;)
-Supported algorithms are &#8220;graphframes&#8221; and &#8220;graphx&#8221;.</li>
-<li><strong>checkpointInterval</strong> &#8211; checkpoint interval in terms of number of iterations (default: 2)</li>
-<li><strong>broadcastThreshold</strong> &#8211; broadcast threshold in propagating component assignments
+<li><strong>algorithm</strong> – connected components algorithm to use (default: “graphframes”)
+Supported algorithms are “graphframes” and “graphx”.</li>
+<li><strong>checkpointInterval</strong> – checkpoint interval in terms of number of iterations (default: 2)</li>
+<li><strong>broadcastThreshold</strong> – broadcast threshold in propagating component assignments
 (default: 1000000)</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">DataFrame with new vertices column &#8220;component&#8221;</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">DataFrame with new vertices column “component”</p>
 </td>
 </tr>
 </tbody>
@@ -179,8 +167,8 @@ Supported algorithms are &#8220;graphframes&#8221; and &#8220;graphx&#8221;.</li
 <dd><dl class="docutils">
 <dt>The degree of each vertex in the graph, returned as a DataFrame with two columns:</dt>
 <dd><ul class="first last simple">
-<li>&#8220;id&#8221;: the ID of the vertex</li>
-<li>&#8216;degree&#8217; (integer) the degree of the vertex</li>
+<li>“id”: the ID of the vertex</li>
+<li>‘degree’ (integer) the degree of the vertex</li>
 </ul>
 </dd>
 </dl>
@@ -189,7 +177,21 @@ Supported algorithms are &#8220;graphframes&#8221; and &#8220;graphx&#8221;.</li
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with new vertices column &#8220;degree&#8221;</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with new vertices column “degree”</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphframes.GraphFrame.dropIsolatedVertices">
+<code class="descname">dropIsolatedVertices</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphframes/graphframe.html#GraphFrame.dropIsolatedVertices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphframes.GraphFrame.dropIsolatedVertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drops isolated vertices, vertices are not contained in any edges.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">GraphFrame with filtered vertices.</td>
 </tr>
 </tbody>
 </table>
@@ -198,9 +200,41 @@ Supported algorithms are &#8220;graphframes&#8221; and &#8220;graphx&#8221;.</li
 <dl class="attribute">
 <dt id="graphframes.GraphFrame.edges">
 <code class="descname">edges</code><a class="headerlink" href="#graphframes.GraphFrame.edges" title="Permalink to this definition">¶</a></dt>
-<dd><p><code class="xref py py-class docutils literal"><span class="pre">DataFrame</span></code> holding edge information, with unique columns &#8220;src&#8221; and
-&#8220;dst&#8221; storing source vertex IDs and destination vertex IDs of edges,
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> holding edge information, with unique columns “src” and
+“dst” storing source vertex IDs and destination vertex IDs of edges,
 respectively.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphframes.GraphFrame.filterEdges">
+<code class="descname">filterEdges</code><span class="sig-paren">(</span><em>condition</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphframes/graphframe.html#GraphFrame.filterEdges"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphframes.GraphFrame.filterEdges" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters the edges based on expression, keep all vertices.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>condition</strong> – String or Column describing the condition expression for filtering.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">GraphFrame with filtered edges.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphframes.GraphFrame.filterVertices">
+<code class="descname">filterVertices</code><span class="sig-paren">(</span><em>condition</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphframes/graphframe.html#GraphFrame.filterVertices"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphframes.GraphFrame.filterVertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filters the vertices based on expression, remove edges containing any dropped vertices.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>condition</strong> – String or Column describing the condition expression for filtering.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">GraphFrame with filtered vertices and edges.</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -212,7 +246,7 @@ respectively.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pattern</strong> &#8211; String describing the motif to search for.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pattern</strong> – String describing the motif to search for.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with one Row for each instance of the motif found</td>
 </tr>
@@ -226,8 +260,8 @@ respectively.</p>
 <dd><dl class="docutils">
 <dt>The in-degree of each vertex in the graph, returned as a DataFame with two columns:</dt>
 <dd><ul class="first last simple">
-<li>&#8220;id&#8221;: the ID of the vertex</li>
-<li>&#8220;inDegree&#8221; (int) storing the in-degree of the vertex</li>
+<li>“id”: the ID of the vertex</li>
+<li>“inDegree” (int) storing the in-degree of the vertex</li>
 </ul>
 </dd>
 </dl>
@@ -236,7 +270,7 @@ respectively.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with new vertices column &#8220;inDegree&#8221;</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with new vertices column “inDegree”</td>
 </tr>
 </tbody>
 </table>
@@ -251,9 +285,9 @@ respectively.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maxIter</strong> &#8211; the number of iterations to be performed</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maxIter</strong> – the number of iterations to be performed</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with new vertices column &#8220;label&#8221;</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with new vertices column “label”</td>
 </tr>
 </tbody>
 </table>
@@ -265,8 +299,8 @@ respectively.</p>
 <dd><dl class="docutils">
 <dt>The out-degree of each vertex in the graph, returned as a DataFrame with two columns:</dt>
 <dd><ul class="first last simple">
-<li>&#8220;id&#8221;: the ID of the vertex</li>
-<li>&#8220;outDegree&#8221; (integer) storing the out-degree of the vertex</li>
+<li>“id”: the ID of the vertex</li>
+<li>“outDegree” (integer) storing the out-degree of the vertex</li>
 </ul>
 </dd>
 </dl>
@@ -275,7 +309,7 @@ respectively.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with new vertices column &#8220;outDegree&#8221;</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with new vertices column “outDegree”</td>
 </tr>
 </tbody>
 </table>
@@ -292,16 +326,40 @@ Note: Exactly one of fixed_num_iter or tolerance must be set.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>resetProbability</strong> &#8211; Probability of resetting to a random vertex.</li>
-<li><strong>sourceId</strong> &#8211; (optional) the source vertex for a personalized PageRank.</li>
-<li><strong>maxIter</strong> &#8211; If set, the algorithm is run for a fixed number
+<li><strong>resetProbability</strong> – Probability of resetting to a random vertex.</li>
+<li><strong>sourceId</strong> – (optional) the source vertex for a personalized PageRank.</li>
+<li><strong>maxIter</strong> – If set, the algorithm is run for a fixed number
 of iterations. This may not be set if the <cite>tol</cite> parameter is set.</li>
-<li><strong>tol</strong> &#8211; If set, the algorithm is run until the given tolerance.
+<li><strong>tol</strong> – If set, the algorithm is run until the given tolerance.
 This may not be set if the <cite>numIter</cite> parameter is set.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">GraphFrame with new vertices column &#8220;pagerank&#8221; and new edges column &#8220;weight&#8221;</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">GraphFrame with new vertices column “pagerank” and new edges column “weight”</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="graphframes.GraphFrame.parallelPersonalizedPageRank">
+<code class="descname">parallelPersonalizedPageRank</code><span class="sig-paren">(</span><em>resetProbability=0.15</em>, <em>sourceIds=None</em>, <em>maxIter=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/graphframes/graphframe.html#GraphFrame.parallelPersonalizedPageRank"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#graphframes.GraphFrame.parallelPersonalizedPageRank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the personalized PageRank algorithm on the graph,
+from the provided list of sources in parallel for a fixed number of iterations.</p>
+<p>See Scala documentation for more details.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resetProbability</strong> – Probability of resetting to a random vertex</li>
+<li><strong>sourceIds</strong> – the source vertices for a personalized PageRank</li>
+<li><strong>maxIter</strong> – the fixed number of iterations this algorithm runs</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">GraphFrame with new vertices column “pageranks” and new edges column “weight”</p>
 </td>
 </tr>
 </tbody>
@@ -324,9 +382,9 @@ storage level.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>landmarks</strong> &#8211; a set of one or more landmarks</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>landmarks</strong> – a set of one or more landmarks</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with new vertices column &#8220;distances&#8221;</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with new vertices column “distances”</td>
 </tr>
 </tbody>
 </table>
@@ -341,9 +399,9 @@ storage level.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maxIter</strong> &#8211; the number of iterations to run</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maxIter</strong> – the number of iterations to run</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with new vertex column &#8220;component&#8221;</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with new vertex column “component”</td>
 </tr>
 </tbody>
 </table>
@@ -373,7 +431,7 @@ storage level.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with new vertex column &#8220;count&#8221;</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with new vertex column “count”</td>
 </tr>
 </tbody>
 </table>
@@ -384,11 +442,11 @@ storage level.</p>
 <code class="descname">triplets</code><a class="headerlink" href="#graphframes.GraphFrame.triplets" title="Permalink to this definition">¶</a></dt>
 <dd><p>The triplets (source vertex)-[edge]-&gt;(destination vertex) for all edges in the graph.</p>
 <dl class="docutils">
-<dt>Returned as a <code class="xref py py-class docutils literal"><span class="pre">DataFrame</span></code> with three columns:</dt>
+<dt>Returned as a <code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> with three columns:</dt>
 <dd><ul class="first last simple">
-<li>&#8220;src&#8221;: source vertex with schema matching &#8216;vertices&#8217;</li>
-<li>&#8220;edge&#8221;: edge with schema matching &#8216;edges&#8217;</li>
-<li>&#8216;dst&#8217;: destination vertex with schema matching &#8216;vertices&#8217;</li>
+<li>“src”: source vertex with schema matching ‘vertices’</li>
+<li>“edge”: edge with schema matching ‘edges’</li>
+<li>‘dst’: destination vertex with schema matching ‘vertices’</li>
 </ul>
 </dd>
 </dl>
@@ -396,7 +454,7 @@ storage level.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with columns &#8216;src&#8217;, &#8216;edge&#8217;, and &#8216;dst&#8217;</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">DataFrame with columns ‘src’, ‘edge’, and ‘dst’</td>
 </tr>
 </tbody>
 </table>
@@ -412,7 +470,7 @@ and remove all blocks for it from memory and disk.</p>
 <dl class="attribute">
 <dt id="graphframes.GraphFrame.vertices">
 <code class="descname">vertices</code><a class="headerlink" href="#graphframes.GraphFrame.vertices" title="Permalink to this definition">¶</a></dt>
-<dd><p><code class="xref py py-class docutils literal"><span class="pre">DataFrame</span></code> holding vertex information, with unique column &#8220;id&#8221;
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code> holding vertex information, with unique column “id”
 for vertex IDs.</p>
 </dd></dl>
 
@@ -451,12 +509,14 @@ for vertex IDs.</p>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -479,13 +539,13 @@ for vertex IDs.</p>
           <a href="index.html" title="Welcome to the GraphFrames Python API docs!"
              >previous</a> |</li>
     
-        <li class="nav-item nav-item-0"><a href="index.html">pygraphframes 0.5.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pygraphframes 0.6.0 documentation</a> &#187;</li>
  
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2016, Timothy Hunter and Joseph Bradley.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.7.
     </div>
   </body>
 </html>

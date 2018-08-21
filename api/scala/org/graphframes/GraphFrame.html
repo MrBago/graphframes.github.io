@@ -351,6 +351,23 @@ storage level.</p>
       <p class="shortcomment cmt">The degree of each vertex in the graph, returned as a DataFrame with two columns:</p><div class="fullcomment"><div class="comment cmt"><p>The degree of each vertex in the graph, returned as a DataFrame with two columns:</p><ul><li><a href="GraphFrame$.html#ID:String" class="extmbr" name="org.graphframes.GraphFrame#ID">GraphFrame.ID</a> the ID of the vertex</li><li>'degree' (integer) the degree of the vertex
 Note that vertices with 0 edges are not returned in the result.
 </li></ul></div></div>
+    </li><li name="org.graphframes.GraphFrame#dropIsolatedVertices" visbl="pub" data-isabs="false" fullComment="no" group="subgraph">
+      <a id="dropIsolatedVertices():org.graphframes.GraphFrame"></a>
+      <a id="dropIsolatedVertices():GraphFrame"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dropIsolatedVertices</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="org.graphframes.GraphFrame">GraphFrame</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#org.graphframes.GraphFrame@dropIsolatedVertices():org.graphframes.GraphFrame" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Drop isolated vertices, vertices not contained in any edges.</p>
     </li><li name="org.graphframes.GraphFrame#edgeColumnMap" visbl="pub" data-isabs="false" fullComment="no" group="conversions">
       <a id="edgeColumnMap:Map[String,Int]"></a>
       <a id="edgeColumnMap:Map[String,Int]"></a>
@@ -527,6 +544,76 @@ attributes for each pair.</p><p>The order of the columns is available in <a href
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="org.graphframes.GraphFrame#filterEdges" visbl="pub" data-isabs="false" fullComment="no" group="subgraph">
+      <a id="filterEdges(conditionExpr:String):org.graphframes.GraphFrame"></a>
+      <a id="filterEdges(String):GraphFrame"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">filterEdges</span><span class="params">(<span name="conditionExpr">conditionExpr: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="org.graphframes.GraphFrame">GraphFrame</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#org.graphframes.GraphFrame@filterEdges(conditionExpr:String):org.graphframes.GraphFrame" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Filter the edges according to String expression.</p>
+    </li><li name="org.graphframes.GraphFrame#filterEdges" visbl="pub" data-isabs="false" fullComment="no" group="subgraph">
+      <a id="filterEdges(condition:org.apache.spark.sql.Column):org.graphframes.GraphFrame"></a>
+      <a id="filterEdges(Column):GraphFrame"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">filterEdges</span><span class="params">(<span name="condition">condition: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <a href="" class="extype" name="org.graphframes.GraphFrame">GraphFrame</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#org.graphframes.GraphFrame@filterEdges(condition:org.apache.spark.sql.Column):org.graphframes.GraphFrame" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Filter the edges according to Column expression, keep all vertices.</p>
+    </li><li name="org.graphframes.GraphFrame#filterVertices" visbl="pub" data-isabs="false" fullComment="no" group="subgraph">
+      <a id="filterVertices(conditionExpr:String):org.graphframes.GraphFrame"></a>
+      <a id="filterVertices(String):GraphFrame"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">filterVertices</span><span class="params">(<span name="conditionExpr">conditionExpr: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="org.graphframes.GraphFrame">GraphFrame</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#org.graphframes.GraphFrame@filterVertices(conditionExpr:String):org.graphframes.GraphFrame" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Filter the vertices according to String expression, remove edges containing any dropped
+vertices.</p>
+    </li><li name="org.graphframes.GraphFrame#filterVertices" visbl="pub" data-isabs="false" fullComment="no" group="subgraph">
+      <a id="filterVertices(condition:org.apache.spark.sql.Column):org.graphframes.GraphFrame"></a>
+      <a id="filterVertices(Column):GraphFrame"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">filterVertices</span><span class="params">(<span name="condition">condition: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <a href="" class="extype" name="org.graphframes.GraphFrame">GraphFrame</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#org.graphframes.GraphFrame@filterVertices(condition:org.apache.spark.sql.Column):org.graphframes.GraphFrame" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Filter the vertices according to Column expression, remove edges containing any dropped
+vertices.</p>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -584,14 +671,22 @@ in the motif.  In this case, the returned columns will be in order of the patter
       <code>StructType</code> with sub-fields equivalent to the schema (columns) of
       <a href="#vertices:org.apache.spark.sql.DataFrame" class="extmbr" name="org.graphframes.GraphFrame#vertices">GraphFrame.vertices</a>. Similarly, an edge <code>e</code> in a motif will produce a column &quot;e&quot;
       in the result <code>DataFrame</code> with sub-fields equivalent to the schema (columns) of
-      <a href="#edges:org.apache.spark.sql.DataFrame" class="extmbr" name="org.graphframes.GraphFrame#edges">GraphFrame.edges</a>.</li></ul></li><li>It is acceptable to omit names for vertices or edges in motifs when not needed.
+      <a href="#edges:org.apache.spark.sql.DataFrame" class="extmbr" name="org.graphframes.GraphFrame#edges">GraphFrame.edges</a>.</li><li>Be aware that names do *not* identify *distinct* elements: two elements with different
+      names may refer to the same graph element.  For example, in the motif
+      <code>&quot;(a)-[e]-&gt;(b); (b)-[e2]-&gt;(c)&quot;</code>, the names <code>a</code> and <code>c</code> could refer to the same vertex.
+      To restrict named elements to be distinct vertices or edges, use post-hoc filters
+      such as <code>resultDataframe.filter(&quot;a.id != c.id&quot;)</code>.</li></ul></li><li>It is acceptable to omit names for vertices or edges in motifs when not needed.
    E.g., <code>&quot;(a)-[]-&gt;(b)&quot;</code> expresses an edge between vertices <code>a,b</code> but does not assign a name
    to the edge.  There will be no column for the anonymous edge in the result <code>DataFrame</code>.
    Similarly, <code>&quot;(a)-[e]-&gt;()&quot;</code> indicates an out-edge of vertex <code>a</code> but does not name
-   the destination vertex.</li><li>An edge can be negated to indicate that the edge should *not* be present in the graph.
+   the destination vertex.  These are called *anonymous* vertices and edges.</li><li>An edge can be negated to indicate that the edge should *not* be present in the graph.
    E.g., <code>&quot;(a)-[]-&gt;(b); !(b)-[]-&gt;(a)&quot;</code> finds edges from <code>a</code> to <code>b</code> for which there is *no*
-   edge from <code>b</code> to <code>a</code>.</li></ul><p>More complex queries, such as queries which operate on vertex or edge attributes,
-can be expressed by applying filters to the result <code>DataFrame</code>.
+   edge from <code>b</code> to <code>a</code>.</li></ul><p>Restrictions:</p><ul><li>Motifs are not allowed to contain edges without any named elements: <code>&quot;()-[]-&gt;()&quot;</code> and
+   <code>&quot;!()-[]-&gt;()&quot;</code> are prohibited terms.</li><li>Motifs are not allowed to contain named edges within negated terms (since these named
+   edges would never appear within results).  E.g., <code>&quot;!(a)-[ab]-&gt;(b)&quot;</code> is invalid, but
+   <code>&quot;!(a)-[]-&gt;(b)&quot;</code> is valid.</li></ul><p>More complex queries, such as queries which operate on vertex or edge attributes,
+can be expressed by applying filters to the result <code>DataFrame</code>.</p><p>This can return duplicate rows.  E.g., a query <code>&quot;(u)-[]-&gt;()&quot;</code> will return a result for each
+matching edge, even if those edges share the same vertex <code>u</code>.
 </p></div><dl class="paramcmts block"><dt class="param">pattern</dt><dd class="cmt"><p>Pattern specifying a motif to search for.</p></dd><dt>returns</dt><dd class="cmt"><p><code>DataFrame</code> containing all instances of the motif.</p></dd></dl></div>
     </li><li name="scala.Predef.StringFormat#formatted" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="formatted(fmtstr:String):String"></a>
@@ -1309,6 +1404,9 @@ and various other user-defined attributes with other attributes.</p><p>The order
               
             </div><div class="group" name="structure">
               <h3>Structure information</h3>
+              
+            </div><div class="group" name="subgraph">
+              <h3>Subgraph selection</h3>
               
             </div><div class="group" name="Ungrouped">
               <h3>Ungrouped</h3>

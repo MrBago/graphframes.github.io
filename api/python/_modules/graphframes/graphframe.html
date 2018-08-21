@@ -1,35 +1,23 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>graphframes.graphframe &#8212; pygraphframes 0.5.0 documentation</title>
-    
+    <title>graphframes.graphframe &#8212; pygraphframes 0.6.0 documentation</title>
     <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygraphframes.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '0.5.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/pygraphframes.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -40,7 +28,7 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
     
-        <li class="nav-item nav-item-0"><a href="../../index.html">pygraphframes 0.5.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">pygraphframes 0.6.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
       </ul>
@@ -116,7 +104,6 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_edges</span> <span class="o">=</span> <span class="n">e</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sqlContext</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">sql_ctx</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqlContext</span><span class="o">.</span><span class="n">_sc</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">spark</span><span class="o">.</span><span class="n">ml</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">Tokenizer</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_jvm_gf_api</span> <span class="o">=</span> <span class="n">_java_api</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sc</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">ID</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jvm_gf_api</span><span class="o">.</span><span class="n">ID</span><span class="p">()</span>
@@ -251,6 +238,46 @@
         <span class="n">jdf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jvm_graph</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">jdf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqlContext</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="GraphFrame.filterVertices"><a class="viewcode-back" href="../../graphframes.html#graphframes.GraphFrame.filterVertices">[docs]</a>    <span class="k">def</span> <span class="nf">filterVertices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Filters the vertices based on expression, remove edges containing any dropped vertices.</span>
+<span class="sd">        </span>
+<span class="sd">        :param condition: String or Column describing the condition expression for filtering.</span>
+<span class="sd">        :return: GraphFrame with filtered vertices and edges. </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">basestring</span><span class="p">):</span>
+            <span class="n">jdf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jvm_graph</span><span class="o">.</span><span class="n">filterVertices</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">Column</span><span class="p">):</span>
+            <span class="n">jdf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jvm_graph</span><span class="o">.</span><span class="n">filterVertices</span><span class="p">(</span><span class="n">condition</span><span class="o">.</span><span class="n">_jc</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;condition should be string or Column&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_from_java_gf</span><span class="p">(</span><span class="n">jdf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqlContext</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GraphFrame.filterEdges"><a class="viewcode-back" href="../../graphframes.html#graphframes.GraphFrame.filterEdges">[docs]</a>    <span class="k">def</span> <span class="nf">filterEdges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Filters the edges based on expression, keep all vertices.</span>
+<span class="sd">        </span>
+<span class="sd">        :param condition: String or Column describing the condition expression for filtering.</span>
+<span class="sd">        :return: GraphFrame with filtered edges. </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">basestring</span><span class="p">):</span>
+            <span class="n">jdf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jvm_graph</span><span class="o">.</span><span class="n">filterEdges</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">Column</span><span class="p">):</span>
+            <span class="n">jdf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jvm_graph</span><span class="o">.</span><span class="n">filterEdges</span><span class="p">(</span><span class="n">condition</span><span class="o">.</span><span class="n">_jc</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;condition should be string or Column&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_from_java_gf</span><span class="p">(</span><span class="n">jdf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqlContext</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GraphFrame.dropIsolatedVertices"><a class="viewcode-back" href="../../graphframes.html#graphframes.GraphFrame.dropIsolatedVertices">[docs]</a>    <span class="k">def</span> <span class="nf">dropIsolatedVertices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Drops isolated vertices, vertices are not contained in any edges.</span>
+
+<span class="sd">        :return: GraphFrame with filtered vertices. </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">jdf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jvm_graph</span><span class="o">.</span><span class="n">dropIsolatedVertices</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">_from_java_gf</span><span class="p">(</span><span class="n">jdf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqlContext</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="GraphFrame.bfs"><a class="viewcode-back" href="../../graphframes.html#graphframes.GraphFrame.bfs">[docs]</a>    <span class="k">def</span> <span class="nf">bfs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fromExpr</span><span class="p">,</span> <span class="n">toExpr</span><span class="p">,</span> <span class="n">edgeFilter</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">maxPathLength</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Breadth-first search (BFS).</span>
@@ -374,6 +401,29 @@
         <span class="n">jgf</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">_from_java_gf</span><span class="p">(</span><span class="n">jgf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqlContext</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="GraphFrame.parallelPersonalizedPageRank"><a class="viewcode-back" href="../../graphframes.html#graphframes.GraphFrame.parallelPersonalizedPageRank">[docs]</a>    <span class="k">def</span> <span class="nf">parallelPersonalizedPageRank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">resetProbability</span> <span class="o">=</span> <span class="mf">0.15</span><span class="p">,</span> <span class="n">sourceIds</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                                     <span class="n">maxIter</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Run the personalized PageRank algorithm on the graph,</span>
+<span class="sd">        from the provided list of sources in parallel for a fixed number of iterations.</span>
+
+<span class="sd">        See Scala documentation for more details.</span>
+
+<span class="sd">        :param resetProbability: Probability of resetting to a random vertex</span>
+<span class="sd">        :param sourceIds: the source vertices for a personalized PageRank</span>
+<span class="sd">        :param maxIter: the fixed number of iterations this algorithm runs</span>
+<span class="sd">        :return:  GraphFrame with new vertices column &quot;pageranks&quot; and new edges column &quot;weight&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">sourceIds</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">sourceIds</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Source vertices Ids sourceIds must be provided&quot;</span>
+        <span class="k">assert</span> <span class="n">maxIter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Max number of iterations maxIter must be provided&quot;</span>
+        <span class="n">sourceIds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">PythonUtils</span><span class="o">.</span><span class="n">toArray</span><span class="p">(</span><span class="n">sourceIds</span><span class="p">)</span>
+        <span class="n">builder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jvm_graph</span><span class="o">.</span><span class="n">parallelPersonalizedPageRank</span><span class="p">()</span>
+        <span class="n">builder</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">resetProbability</span><span class="p">(</span><span class="n">resetProbability</span><span class="p">)</span>
+        <span class="n">builder</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">sourceIds</span><span class="p">(</span><span class="n">sourceIds</span><span class="p">)</span>
+        <span class="n">builder</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">maxIter</span><span class="p">(</span><span class="n">maxIter</span><span class="p">)</span>
+        <span class="n">jgf</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">_from_java_gf</span><span class="p">(</span><span class="n">jgf</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sqlContext</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="GraphFrame.shortestPaths"><a class="viewcode-back" href="../../graphframes.html#graphframes.GraphFrame.shortestPaths">[docs]</a>    <span class="k">def</span> <span class="nf">shortestPaths</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">landmarks</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Runs the shortest path algorithm from a set of landmark vertices in the graph.</span>
@@ -452,12 +502,14 @@
         <div class="sphinxsidebarwrapper">
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -474,14 +526,14 @@
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
     
-        <li class="nav-item nav-item-0"><a href="../../index.html">pygraphframes 0.5.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">pygraphframes 0.6.0 documentation</a> &#187;</li>
 
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2016, Timothy Hunter and Joseph Bradley.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.7.
     </div>
   </body>
 </html>

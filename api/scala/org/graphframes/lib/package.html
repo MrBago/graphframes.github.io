@@ -196,16 +196,17 @@ trivial solutions (all nodes are identified into a single community).</p><p>The 
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">PageRank algorithm implementation.</p><div class="fullcomment"><div class="comment cmt"><p>PageRank algorithm implementation. There are two implementations of PageRank.</p><p>The first implementation uses the standalone <a href="../GraphFrame.html" class="extype" name="org.graphframes.GraphFrame">GraphFrame</a> interface and runs PageRank
-for a fixed number of iterations.  This can be run by setting <code>maxIter</code>.</p><pre><span class="kw">var</span> PR = <span class="std">Array</span>.fill(n)( <span class="num">1.0</span> )
+      <p class="shortcomment cmt">PageRank algorithm implementation.</p><div class="fullcomment"><div class="comment cmt"><p>PageRank algorithm implementation. There are two implementations of PageRank.</p><p>The first one uses the <code>org.apache.spark.graphx.graph</code> interface with <code>aggregateMessages</code> and runs
+PageRank for a fixed number of iterations. This can be executed by setting <code>maxIter</code>. Conceptually,
+the algorithm does the following:</p><pre><span class="kw">var</span> PR = <span class="std">Array</span>.fill(n)( <span class="num">1.0</span> )
 <span class="kw">val</span> oldPR = <span class="std">Array</span>.fill(n)( <span class="num">1.0</span> )
 <span class="kw">for</span>( iter <span class="kw">&lt;-</span> <span class="num">0</span> until maxIter ) {
   swap(oldPR, PR)
   <span class="kw">for</span>( i <span class="kw">&lt;-</span> <span class="num">0</span> until n ) {
     PR[i] = alpha + (<span class="num">1</span> - alpha) * inNbrs[i].map(j <span class="kw">=&gt;</span> oldPR[j] / outDeg[j]).sum
   }
-}</pre><p>The second implementation uses the <code>org.apache.spark.graphx.Pregel</code> interface and runs PageRank
-until convergence.  This can be run by setting <code>tol</code>.</p><pre><span class="kw">var</span> PR = <span class="std">Array</span>.fill(n)( <span class="num">1.0</span> )
+}</pre><p>The second implementation uses the <code>org.apache.spark.graphx.Pregel</code> interface and runs PageRank until
+convergence and this can be run by setting <code>tol</code>. Conceptually, the algorithm does the following:</p><pre><span class="kw">var</span> PR = <span class="std">Array</span>.fill(n)( <span class="num">1.0</span> )
 <span class="kw">val</span> oldPR = <span class="std">Array</span>.fill(n)( <span class="num">0.0</span> )
 <span class="kw">while</span>( max(abs(PR - oldPr)) &gt; tol ) {
   swap(oldPR, PR)
@@ -268,9 +269,9 @@ greater than 1.</p><p>The resulting vertices DataFrame contains one additional c
     </span>
       <p class="shortcomment cmt">Implement SVD++ based on &quot;Factorization Meets the Neighborhood:
 a Multifaceted Collaborative Filtering Model&quot;,
-available at <a href="https://movie-datamining.googlecode.com/svn/trunk/kdd08koren.pdf" target="_blank">https://movie-datamining.googlecode.com/svn/trunk/kdd08koren.pdf</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Implement SVD++ based on &quot;Factorization Meets the Neighborhood:
+available at <a href="https://dl.acm.org/citation.cfm?id=1401944" target="_blank">https://dl.acm.org/citation.cfm?id=1401944</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Implement SVD++ based on &quot;Factorization Meets the Neighborhood:
 a Multifaceted Collaborative Filtering Model&quot;,
-available at <a href="https://movie-datamining.googlecode.com/svn/trunk/kdd08koren.pdf" target="_blank">https://movie-datamining.googlecode.com/svn/trunk/kdd08koren.pdf</a>.</p><p>Note: The status of this algorithm is EXPERIMENTAL. Its API and implementation may be changed
+available at <a href="https://dl.acm.org/citation.cfm?id=1401944" target="_blank">https://dl.acm.org/citation.cfm?id=1401944</a>.</p><p>Note: The status of this algorithm is EXPERIMENTAL. Its API and implementation may be changed
 in the future.</p><p>The prediction rule is r<sub>ui</sub> = u + b<sub>u</sub> + b<sub>i</sub> + q<sub>i</sub>*(p<sub>u</sub> + |N(u)|<sup><sup>-0.5</sup></sup>*sum(y)).
 See the details on page 6 of the article.</p><p>Configuration parameters: see the description of each parameter in the article.</p><p>Returns a DataFrame with vertex attributes containing the trained model.  See the object
 (static) members for the names of the output columns.</p></div></div>
@@ -333,7 +334,7 @@ vertex assigned to the SCC containing that vertex.</p><p>The resulting DataFrame
     </span>
       <p class="shortcomment cmt">Computes the number of triangles passing through each vertex.</p><div class="fullcomment"><div class="comment cmt"><p>Computes the number of triangles passing through each vertex.</p><p>This algorithm ignores edge direction; i.e., all edges are treated as undirected.
 In a multigraph, duplicate edges will be counted only once.</p><p>Note that this provides the same algorithm as GraphX, but GraphX assumes the user provides
-a graph in the correct format.  In Spark 2.0, GraphX can automatically canonicalize
+a graph in the correct format.  In Spark 2.0+, GraphX can automatically canonicalize
 the graph to put it in this format.</p><p>The returned DataFrame contains all the original vertex information and one additional column:</p><ul><li>count (<code>LongType</code>): the count of triangles
 </li></ul></div></div>
     </li></ol>

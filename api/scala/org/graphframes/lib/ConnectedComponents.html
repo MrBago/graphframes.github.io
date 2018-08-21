@@ -472,6 +472,23 @@ information with each vertex assigned a component ID.</p><p>The resulting DataFr
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="org.graphframes.lib.ConnectedComponents#getIntermediateStorageLevel" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getIntermediateStorageLevel:org.apache.spark.storage.StorageLevel"></a>
+      <a id="getIntermediateStorageLevel:StorageLevel"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getIntermediateStorageLevel</span><span class="result">: <span class="extype" name="org.apache.spark.storage.StorageLevel">StorageLevel</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.graphframes.lib.ConnectedComponents@getIntermediateStorageLevel:org.apache.spark.storage.StorageLevel" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Gets storage level for intermediate datasets that require multiple passes.</p>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -713,6 +730,23 @@ If the checkpoint directory is not set, this throws a <code>java.io.IOException<
 Set a nonpositive value to disable checkpointing.
 This parameter is only used when the algorithm is set to &quot;graphframes&quot;.
 Its default value might change in the future.</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><code>org.apache.spark.SparkContext.setCheckpointDir</code> in Spark API doc</p></span></dd></dl></div>
+    </li><li name="org.graphframes.lib.ConnectedComponents#setIntermediateStorageLevel" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="setIntermediateStorageLevel(value:org.apache.spark.storage.StorageLevel):ConnectedComponents.this.type"></a>
+      <a id="setIntermediateStorageLevel(StorageLevel):ConnectedComponents.this.type"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setIntermediateStorageLevel</span><span class="params">(<span name="value">value: <span class="extype" name="org.apache.spark.storage.StorageLevel">StorageLevel</span></span>)</span><span class="result">: <a href="" class="extype" name="org.graphframes.lib.ConnectedComponents">ConnectedComponents</a>.this.type</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.graphframes.lib.ConnectedComponents@setIntermediateStorageLevel(value:org.apache.spark.storage.StorageLevel):ConnectedComponents.this.type" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Sets storage level for intermediate datasets that require multiple passes (default: <code><code>MEMORY_AND_DISK</code></code>).</p>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

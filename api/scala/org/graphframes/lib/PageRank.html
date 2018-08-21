@@ -49,16 +49,17 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>PageRank algorithm implementation. There are two implementations of PageRank.</p><p>The first implementation uses the standalone <a href="../GraphFrame.html" class="extype" name="org.graphframes.GraphFrame">GraphFrame</a> interface and runs PageRank
-for a fixed number of iterations.  This can be run by setting <code>maxIter</code>.</p><pre><span class="kw">var</span> PR = <span class="std">Array</span>.fill(n)( <span class="num">1.0</span> )
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>PageRank algorithm implementation. There are two implementations of PageRank.</p><p>The first one uses the <code>org.apache.spark.graphx.graph</code> interface with <code>aggregateMessages</code> and runs
+PageRank for a fixed number of iterations. This can be executed by setting <code>maxIter</code>. Conceptually,
+the algorithm does the following:</p><pre><span class="kw">var</span> PR = <span class="std">Array</span>.fill(n)( <span class="num">1.0</span> )
 <span class="kw">val</span> oldPR = <span class="std">Array</span>.fill(n)( <span class="num">1.0</span> )
 <span class="kw">for</span>( iter <span class="kw">&lt;-</span> <span class="num">0</span> until maxIter ) {
   swap(oldPR, PR)
   <span class="kw">for</span>( i <span class="kw">&lt;-</span> <span class="num">0</span> until n ) {
     PR[i] = alpha + (<span class="num">1</span> - alpha) * inNbrs[i].map(j <span class="kw">=&gt;</span> oldPR[j] / outDeg[j]).sum
   }
-}</pre><p>The second implementation uses the <code>org.apache.spark.graphx.Pregel</code> interface and runs PageRank
-until convergence.  This can be run by setting <code>tol</code>.</p><pre><span class="kw">var</span> PR = <span class="std">Array</span>.fill(n)( <span class="num">1.0</span> )
+}</pre><p>The second implementation uses the <code>org.apache.spark.graphx.Pregel</code> interface and runs PageRank until
+convergence and this can be run by setting <code>tol</code>. Conceptually, the algorithm does the following:</p><pre><span class="kw">var</span> PR = <span class="std">Array</span>.fill(n)( <span class="num">1.0</span> )
 <span class="kw">val</span> oldPR = <span class="std">Array</span>.fill(n)( <span class="num">0.0</span> )
 <span class="kw">while</span>( max(abs(PR - oldPr)) &gt; tol ) {
   swap(oldPR, PR)
